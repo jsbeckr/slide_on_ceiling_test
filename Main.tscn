@@ -11,7 +11,6 @@ radius = 61.9839
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(327, 318)
-slide_on_ceiling = false
 script = ExtResource("1_rv5tw")
 
 [node name="Icon" type="Sprite2D" parent="CharacterBody2D"]
@@ -36,9 +35,11 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="CheckButton" type="CheckButton" parent="Control"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_right = 44.0
 offset_bottom = 24.0
+focus_mode = 0
 text = "Slide on Ceiling"
 
 [connection signal="toggled" from="Control/CheckButton" to="CharacterBody2D" method="_on_check_button_toggled"]
