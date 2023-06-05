@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://exqeicklkldr"]
+
+[ext_resource type="Texture2D" uid="uid://bj5dg0slproum" path="res://icon.svg" id="1_ir5wo"]
+[ext_resource type="Script" path="res://player.gd" id="1_rv5tw"]
+[ext_resource type="PackedScene" uid="uid://cb8l2oefqgrdl" path="res://Wall.tscn" id="3_i7pd8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mqs34"]
+radius = 61.9839
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(327, 318)
+slide_on_ceiling = false
+script = ExtResource("1_rv5tw")
+
+[node name="Icon" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("1_ir5wo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_mqs34")
+
+[node name="Wall" parent="." instance=ExtResource("3_i7pd8")]
+position = Vector2(472, 419)
+scale = Vector2(8.32, 0.360002)
+
+[node name="Wall2" parent="." instance=ExtResource("3_i7pd8")]
+position = Vector2(375, 146)
+rotation = -0.448228
+scale = Vector2(8, 0.36)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CheckButton" type="CheckButton" parent="Control"]
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 24.0
+text = "Slide on Ceiling"
+
+[connection signal="toggled" from="Control/CheckButton" to="CharacterBody2D" method="_on_check_button_toggled"]
